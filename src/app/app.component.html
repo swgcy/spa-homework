@@ -1,3 +1,61 @@
 <h1>
   {{title}}
 </h1>
+
+<div>
+    現在時刻：{{time| date: 'yyyy/MM/dd HH:mm:ss'}}
+</div>
+
+<div>
+    テキスト入力:
+    <input class="inputtext" [(ngModel)]="text">
+</div>
+<div>
+    テキスト出力:
+    <div [style.font-family]="font" [style.color]="color" [style.font-size.px]="size" >
+    <!--<<div [ngStyle] = "{'font-size': size + 'px', 'font-family': font, 'color': color}">-->    
+        {{text}}
+    </div>
+</div>
+
+<div>
+    テキスト装飾:
+    [SIZE]
+    <select [(ngModel)]="size">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="40">40</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+    </select>
+    [FONT]
+    <select [(ngModel)]="font">
+        <option value="sans-serif">ゴシック</option>
+        <option value="serif">明朝</option>
+        <option value="monospace">等巾</option>         
+        <option value="fantasy">装飾</option>
+        <option value="cursive">手書き</option>
+    </select>
+    [COLOR]
+    <select [(ngModel)]="color">
+        <option value="blue">blue</option>
+        <option value="red">red</option>
+        <option value="green">green</option>
+    </select>
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD1DyFZ6iQ1uU-eP2rfL2qMGWhw8Pv0Vrk",
+    authDomain: "my-app-87bbd.firebaseapp.com",
+    databaseURL: "https://my-app-87bbd.firebaseio.com",
+    projectId: "my-app-87bbd",
+    storageBucket: "my-app-87bbd.appspot.com",
+    messagingSenderId: "858255320595"
+  };
+  firebase.initializeApp(config);
+</script>
